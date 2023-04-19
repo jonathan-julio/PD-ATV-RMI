@@ -17,7 +17,7 @@ public class ServerMain {
 
             Naming.bind("HospitalLocator", (Remote) hospitalLocator);
 
-            System.out.println("HospitalLocator is running..." + hospitalLocator);
+            System.out.println("HospitalLocator is running...");
         } catch (RemoteException e) {
             System.out.println("Error: " + e.getMessage());
         }

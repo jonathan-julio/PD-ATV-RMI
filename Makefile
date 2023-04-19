@@ -9,7 +9,7 @@ run-server:
 	@nohup java -jar server/target/server-0.1-jar-with-dependencies.jar
 
 run-client:
-	java -jar server/target/client-0.1-jar-with-dependencies.jar
+	java -jar client/target/client-0.1-jar-with-dependencies.jar
 
 tmux: 
 	tmux kill-session -t hospital || sleep 2; tmux new -s hospital -d
@@ -18,6 +18,9 @@ tmux:
 	tmux split-window -h -t hospital
 	tmux send-keys -t hospital:0.1 'java -jar client/target/client-0.1-jar-with-dependencies.jar' Enter
 	tmux send-keys -t hospital:0.1 'clear' Enter
+	tmux attach-session -t hospital
+
+tmux-attach:
 	tmux attach-session -t hospital
 
 tmux-kill:
