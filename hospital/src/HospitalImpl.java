@@ -5,14 +5,12 @@ public class HospitalImpl extends UnicastRemoteObject implements Hospital {
 
     private String name;
     private String address;
-    private double latitude;
-    private double longitude;
+    private Location location;
 
-    public HospitalImpl(String name, String address, double latitude, double longitude) throws RemoteException {
+    public HospitalImpl(String name, String address, Location location) throws RemoteException {
         this.name = name;
         this.address = address;
-        this.latitude = latitude;
-        this.longitude = longitude;
+        this.location = location;
     }
 
     public String getName() throws RemoteException {
@@ -23,11 +21,8 @@ public class HospitalImpl extends UnicastRemoteObject implements Hospital {
         return address;
     }
 
-    public double getLatitude() throws RemoteException {
-        return latitude;
+    public Location getLocation() throws RemoteException {
+        return location;
     }
 
-    public double getLongitude() throws RemoteException {
-        return longitude;
-    }
 }

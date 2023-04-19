@@ -10,9 +10,9 @@ public class HospitalLocator extends UnicastRemoteObject implements AmbulanceSer
     protected HospitalLocator() throws RemoteException {
         super();
         hospitals = new ArrayList<>();
-        hospitals.add(new Hospital("Hospital A", new Location(10, 10)));
-        hospitals.add(new Hospital("Hospital B", new Location(20, 20)));
-        hospitals.add(new Hospital("Hospital C", new Location(30, 30)));
+        hospitals.add(new HospitalImpl("Hospital A", "", new Location(10, 10)));
+        hospitals.add(new HospitalImpl("Hospital B","", new Location(20, 20)));
+        hospitals.add(new HospitalImpl("Hospital C","", new Location(30, 30)));
     }
 
     public Hospital findNearestHospital(Location location) throws RemoteException {

@@ -16,8 +16,8 @@ public class AmbulanceServiceImpl extends UnicastRemoteObject implements Ambulan
     public Hospital findNearestHospital(double latitude, double longitude) throws RemoteException {
         List<Double> distances = new ArrayList<>();
         for (Hospital hospital : hospitals) {
-            double distance = Math.sqrt(Math.pow((hospital.getLatitude() - latitude), 2)
-                    + Math.pow((hospital.getLongitude() - longitude), 2));
+            double distance = Math.sqrt(Math.pow((hospital.getLocation().getLatitude() - latitude), 2)
+                    + Math.pow((hospital.getLocation().getLongitude() - longitude), 2));
             distances.add(distance);
         }
         int index = distances.indexOf(Collections.min(distances));
