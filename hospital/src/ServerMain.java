@@ -1,21 +1,29 @@
+import java.net.MalformedURLException;
+import java.rmi.AlreadyBoundException;
+import java.rmi.Naming;
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
 
 public class ServerMain {
-    public static void main(String[] args) {
+    ServerMain() throws MalformedURLException, AlreadyBoundException{
         try {
+            System.setProperty("java.rmi.server.hostname", "192.168.1.5");
+            LocateRegistry.createRegistry(1099);
 
             HospitalLocator hospitalLocator = new HospitalLocator();
 
-            Registry registry = LocateRegistry.createRegistry(1099);
-            registry.rebind("HospitalLocator", hospitalLocator);
+            Naming.bind("HospitalLocator", (Remote) hospitalLocator);
 
-            System.out.println("HospitalLocator is running...");
+            System.out.println("HospitalLocator is running..." + hospitalLocator);
         } catch (RemoteException e) {
             System.out.println("Error: " + e.getMessage());
         }
+
+    }
+
+    public static void main(String[] args) throws MalformedURLException, AlreadyBoundException {
+        new ServerMain();
     }
 }
 
