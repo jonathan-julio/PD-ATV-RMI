@@ -9,12 +9,12 @@ import br.ufrn.rmi.hospital.Location;
 public class HospitalImpl extends UnicastRemoteObject implements Hospital {
 
     private String name;
-    private String address;
+    private int vacancies;
     private Location location;
 
-    public HospitalImpl(String name, String address, Location location) throws RemoteException {
+    public HospitalImpl(String name, int vacancies, Location location) throws RemoteException {
         this.name = name;
-        this.address = address;
+        this.vacancies = vacancies;
         this.location = location;
     }
 
@@ -22,8 +22,8 @@ public class HospitalImpl extends UnicastRemoteObject implements Hospital {
         return name;
     }
 
-    public String getAddress() throws RemoteException {
-        return address;
+    public int getVacancies() throws RemoteException {
+        return vacancies;
     }
 
     public Location getLocation() throws RemoteException {
@@ -31,7 +31,11 @@ public class HospitalImpl extends UnicastRemoteObject implements Hospital {
     }
 
     public Boolean isAvaliable() throws RemoteException {
-        return true;
+        return !(this.vacancies == 0);
+    }
+
+    public void occupyVacancy() throws RemoteException {
+        this.vacancies--;
     }
 
 }

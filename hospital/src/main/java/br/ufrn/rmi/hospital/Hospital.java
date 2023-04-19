@@ -5,7 +5,8 @@ import java.rmi.RemoteException;
 
 public interface Hospital extends Remote {
     String getName() throws RemoteException;
-    String getAddress() throws RemoteException;
+    int getVacancies() throws RemoteException;
     Location getLocation() throws RemoteException;
     Boolean isAvaliable() throws RemoteException;
+    void occupyVacancy() throws RemoteException;
 }
